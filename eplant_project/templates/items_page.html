@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> -->
+
+
+<style>
+figure {
+  border: 1px #cccccc solid;
+  padding: 10px;
+  margin: auto;
+}
+
+figcaption {
+  background-color: rgb(143, 138, 116);
+  color: white;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+  <br>
+  <div class="container">
+    
+    <center><h1>{{ prod.name }}</h1></center>
+    <div class="back-to-shop"><a href="/">&leftarrow; <b><span class="text-muted">Back to shop</span></b></a></div>
+    <figure>
+      <img src="{{prod.image.url}}"  style="width:500px; height: 500px; padding-left: 400px;">
+      <figcaption><h3>{{ prod.desc }}<br>{{ prod.desc }}<br></h3><h2>{{ prod.price }}<br>{{ prod.stock }}</h2>
+        <center><button style="width: 100px; height: 30px;"><a href="{% url 'addcart' prod.id %}" class="tm-btn tm-btn"><b>AddToCart</b></a></button></center></figure>
+    </figcaption><br>
+  </div>
+</body>
+</html>

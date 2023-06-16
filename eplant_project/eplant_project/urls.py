@@ -19,10 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('eplant_home.urls')),
     path('accounts/', include('eplant_account.urls')),
-    path('cart/', include('eplant_cart.urls'))
+    path('admin/', admin.site.urls),
+    path('cart/', include('eplant_cart.urls')),
+    path('', include('eplant_home.urls')),
+    
+    
 ]
 
 urlpatterns= urlpatterns+static(settings.MEDIA_URL,document_root= settings.MEDIA_ROOT)

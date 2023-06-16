@@ -9,8 +9,13 @@ class CartList(models.Model):
     def __str__(self):
         return self.cart_id
 
+
 class CartItem(models.Model):
     prod = models.ForeignKey(Product,on_delete=models.CASCADE)
     cart = models.ForeignKey(CartList,on_delete=models.CASCADE)
     quantity = models.IntegerField()
+    active = models.BooleanField(default=True)
+    
+    def totalsum(self):
+        return self.prod.price*self.quantity
     

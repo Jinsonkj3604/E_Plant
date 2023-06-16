@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -80,73 +81,100 @@
            background-color: #3e8e41;
          }
 
-         .padding_10{
-            font-size: large;
-            color: rgb(29, 23, 23);
-            font-weight: 200;
-
-         }
+         input[type=text] {
+              width: 130px;
+              box-sizing: border-box;
+              border: 2px solid #ccc;
+              border-radius: 4px;
+              font-size: 16px;
+              background-color: white;
+              background-image: url('searchicon.png');
+              background-position: 10px 10px; 
+              background-repeat: no-repeat;
+              padding: 12px 20px 12px 40px;
+              -webkit-transition: width 0.4s ease-in-out;
+              transition: width 0.4s ease-in-out;
+            }
+            
+            input[type=text]:focus {
+              width: 100%;
+            }
          </style>
          
    </head>
    <body>
       <!-- banner bg main start -->
       <div class="banner_bg_main">
-      
-        
+         <!-- header top section start -->
+         <div class="container">
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul>
+                           <li><a href="#">Best Sellers</a></li>
+                           <li><a href="#">Gift Ideas</a></li>
+                           <li><a href="#">New Releases</a></li>
+                           <li><a href="#">Today's Deals</a></li>
+                           <li><a href="#">Customer Service</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- header top section start -->
+         <!-- logo section start -->
+         <div class="logo_section">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="logo"><a href="index.html"><img src="{% static 'images/log.jpg' %}" style="width: 100px; height: 100px;"></a></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- logo section end -->
          <!-- header section start -->
          <div class="header_section">
             <div class="container">
-               <div class="containt_main" style="margin-top: 30px;">
+               <div class="containt_main">
+                  <div id="mySidenav" class="sidenav">
+                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                     <a href="index.html">Home</a>
+                     <a href="fashion.html">Fashion</a>
+                     <a href="electronic.html">Electronic</a>
+                     <a href="jewellery.html">Jewellery</a>
+                  </div>
+                  <span class="toggle_icon" onclick="openNav()"><img src="{% static 'images/toggle-icon.png' %}"></span>
+    
                   <div class="dropdown">
-                     <button class="dropbtn">CateGories</button>
-                     <div class="dropdown-content">
-                     <a href="/">All Items</a>
-                     {% for i in ct %}
-                     <a href="{{ i.get_url}}">{{ i.name }}</a>
-         
-                     {% endfor %}
-                     </div>
-                   </div>
-                   
-                     <div class="main">
-                        <!-- Another variation with a button -->
-                        <form action="{% url 'search' %}" method="get">
-                           <input  class ='search' type="text" name='q' placeholder="Search.." style="width: 100%; margin-top: 10px;">
-                         </form>
-                     </div>
-               
+                    <button class="dropbtn">CateGories</button>
+                    <div class="dropdown-content">
+                    <a href="/">All Items</a>
+                    {% for i in ct %}
+                    <a href="{{ i.get_url}}">{{ i.name }}</a>
+        
+                    {% endfor %}
+                    </div>
+                  </div>
+                  <div class="main">
+                     <!-- Another variation with a button -->
+                     <form>
+                        <input  class ='search' type="text" name='q' placeholder="Search..">
+                      </form>
+                  </div>
                   <div class="header_box">
-                  
                      <div class="login_menu">
                         <ul>
-                           <li><a href="/">
-                              <i class="fa fa-home" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Home</span></a>
-                           </li>
-                           {% if user.is_authenticated %}
-                            <li>Hello {{user.username}}</li>
-                           <li><a href="{% url 'signout' %}">
-                              <i class="fa fa-sign-out" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Logout</span></a>
-                           </li>
-                           
-                           <li><a href="{% url 'cartDetails' %}">
+                           <li><a href="#">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Cart<span><sup>{{itc}}</sup></span></span></a>
+                              <span class="padding_10">Cart</span></a>
                            </li>
-                           {% else %}
-                           <li><a href="{% url 'sign' %}">
-                              <i class="fa fa-sign-in" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Login</span></a>
+                           <li><a href="#">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">Cart</span></a>
                            </li>
-                            <li><a href="{% url 'register' %}">
-                              <i class="fa fa-sign-in" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">SignUP</span></a>
-                           </li>
-
-                           {% endif %}
- 
                         </ul>
                      </div>
                   </div>
@@ -163,7 +191,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">Care The Plants <br>It will create you a Beauty</h1>
-                              <div class="buynow_bt"><a href="#">Go To Green</a></div>
+                              <!-- <div class="buynow_bt"><a href="#">Go To Green</a></div> -->
                            </div>
                         </div>
                      </div>
@@ -184,7 +212,9 @@
                   </a>
                </div>
             </div>
-           
+            
+            
+
          </div>
          <!-- banner section end -->
 
@@ -193,7 +223,6 @@
       </div>
       <!-- banner bg main end -->
       <!-- fashion section start -->
-      
 
 
 
@@ -208,7 +237,7 @@
                      <div class="fashion_section_2">
                         
                         <div class="row">
-                           {% for i in pr.object_list %}
+                           {% for i in pr %}
                            <div class="col-lg-4 col-sm-4">
                               
                               <div class="box_main">
@@ -225,44 +254,29 @@
                            </div>
                            {% endfor %}
                         </div>
-                        <div class="max_auto">
-                           <div class="text-center">
-                           {% for pg in pr.paginator.page_range %}
-                           <a href = '?page={{ pg }}' class="btn btn-light btn-sm {% if pr.number == pg %} activate {% endif %}"><b>{{pg}}</b></a>
-                           {% endfor %}
-                           </div>
-                        </div>
                         
                      </div>
                     
                   </div>
                </div>
-               
+
             </div>
-          
+            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+            </a>
          </div>
       </div>
 
-      <!-- footer section start -->
-      <div class="footer_section layout_padding">
-         <div class="container">
-            <div class="footer_logo"><a href="index.html"><img src="{% static 'images/footer-logo.png' %}"></a></div>
-            <div class="input_bt">
-               <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
-               <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
-            </div>
-            
-            <div class="location_main">Help Line  Number : <a href="#">+1 1800 1200 1200</a></div>
-         </div>
-      </div>
-      <!-- footer section end -->
-      
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="container">
             <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
          </div>
       </div>
+
 
    </body>
 </html>

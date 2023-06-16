@@ -79,25 +79,36 @@
          .dropdown:hover .dropbtn {
            background-color: #3e8e41;
          }
-
-         .padding_10{
-            font-size: large;
-            color: rgb(29, 23, 23);
-            font-weight: 200;
-
-         }
          </style>
          
    </head>
    <body>
       <!-- banner bg main start -->
       <div class="banner_bg_main">
-      
-        
+         <!-- header top section start -->
+         <!-- logo section start -->
+         <div class="logo_section">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="logo"><a href="index.html"><img src="{% static 'images/log.jpg' %}" style="width: 100px; height: 100px;"></a></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- logo section end -->
          <!-- header section start -->
          <div class="header_section">
             <div class="container">
-               <div class="containt_main" style="margin-top: 30px;">
+               <div class="containt_main">
+                  <div id="mySidenav" class="sidenav">
+                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                     <a href="index.html">Home</a>
+                     <a href="fashion.html">Fashion</a>
+                     <a href="electronic.html">Electronic</a>
+                     <a href="jewellery.html">Jewellery</a>
+                  </div>
+                  <span class="toggle_icon" onclick="openNav()"><img src="{% static 'images/toggle-icon.png' %}"></span>
                   <div class="dropdown">
                      <button class="dropbtn">CateGories</button>
                      <div class="dropdown-content">
@@ -108,11 +119,10 @@
                      {% endfor %}
                      </div>
                    </div>
-                   
                      <div class="main">
                         <!-- Another variation with a button -->
                         <form action="{% url 'search' %}" method="get">
-                           <input  class ='search' type="text" name='q' placeholder="Search.." style="width: 100%; margin-top: 10px;">
+                           <input  class ='search' type="text" name='q' placeholder="Search..">
                          </form>
                      </div>
                
@@ -122,27 +132,27 @@
                         <ul>
                            <li><a href="/">
                               <i class="fa fa-home" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Home</span></a>
+                              <span class="padding_10">Home</span></a>
                            </li>
                            {% if user.is_authenticated %}
                             <li>Hello {{user.username}}</li>
                            <li><a href="{% url 'signout' %}">
                               <i class="fa fa-sign-out" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Logout</span></a>
+                              <span class="padding_10">Logout</span></a>
                            </li>
                            
                            <li><a href="{% url 'cartDetails' %}">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Cart<span><sup>{{itc}}</sup></span></span></a>
+                              <span class="padding_10">Cart<span><sup>{{itc}}</sup></span></span></a>
                            </li>
                            {% else %}
                            <li><a href="{% url 'sign' %}">
                               <i class="fa fa-sign-in" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">Login</span></a>
+                              <span class="padding_10">Login</span></a>
                            </li>
                             <li><a href="{% url 'register' %}">
                               <i class="fa fa-sign-in" aria-hidden="true"></i>
-                              <span class="padding_10" style="color: rgb(59, 10, 10);">SignUP</span></a>
+                              <span class="padding_10">SignUP</span></a>
                            </li>
 
                            {% endif %}
@@ -239,7 +249,6 @@
                </div>
                
             </div>
-          
          </div>
       </div>
 
@@ -263,6 +272,5 @@
             <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
          </div>
       </div>
-
    </body>
 </html>
